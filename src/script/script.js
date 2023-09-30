@@ -1,8 +1,16 @@
 const gameXnO = (function() {
 	"use strict";
 
+	const GameBoard = (() => {
+		const board = ["", "", "", "", "", "", "", "", ""];
+
+	})
+
+	
+})();
+/*
 	function gameBoardSetup() {
-		const gameBoard = [0, 1, 2, 3, 4, 5, 6, 7, 8];
+		const gameBoard = ["", "", "", "", "", "", "", "", ""];
 
 		function gameBoardInitialization() {
 			var createDiv = document.createElement('div');
@@ -27,3 +35,4 @@ const gameXnO = (function() {
 
 
 gameXnO.publicMethod();
+*/
