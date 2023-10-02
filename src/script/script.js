@@ -3,10 +3,9 @@ const gameXnO = (function() {
 
 	const GameBoard = (() => {
 		const board = ["", "", "", "", "", "", "", "", ""];
-
+			
 	})
 
-	
 })();
 /*
 	function gameBoardSetup() {
