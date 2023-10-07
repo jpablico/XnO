@@ -7,7 +7,8 @@ const gameSetup = (function() {
 		const gameboard = Array[9];
 
 		gameboard.array.forEach(element => {
-			square.
+			document.createElement("div");
+			htmltext
 		});
 	})();
 	return {
