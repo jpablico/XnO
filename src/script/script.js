@@ -46,7 +46,7 @@ const gameSetup = (() => {
 		  return;
 		}
 		gameboard[squareIndex] = currentPlayer;
-		e.target.textContent = currentPlayer;
+		e.target.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">close</i>' : '<i class="material-icons icons">radio_button_unchecked</i>';
 		const winner = checkForWinner();
 		if (winner) {
 		  gameOver = true;

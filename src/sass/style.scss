@@ -29,12 +29,18 @@ body {
 		
 		place-items: center;
 		.square {
+			display: flex;
+			justify-content: center;
+			align-items: center;
 			aspect-ratio: 1/1;
 			width: 100%;
 			height: 100%;
 			background-color: aqua;
 			border: solid black;
-			
+
+			.material-icons {
+				font-size: 5rem;
+			}
 		}
 	}
 	
