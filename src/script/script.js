@@ -53,7 +53,8 @@ const gameSetup = (() => {
 		  if (winner === 'tie') {
 			alert('Tie game!');
 		  } else {
-			alert(`${winner} wins!`);
+			let winnerName = winner === 'X' ? 'Player 1' : 'Player 2';
+			alert(`${winnerName} wins!`);
 		  }
 		} else {
 		  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';

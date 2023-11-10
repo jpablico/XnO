@@ -52,6 +52,11 @@ body {
 				font-size: 5rem;
 			}
 		}
+		.square:hover {
+			cursor: pointer;
+			background-color: #e0e0e0;
+		}
+
 	}
 	.player-name-container {
 		display: flex;
