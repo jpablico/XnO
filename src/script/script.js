@@ -42,11 +42,13 @@ const gameSetup = (() => {
   
 	  function handleClick(e) {
 		const squareIndex = parseInt(e.target.dataset.index);
+		const gameAlert = document.querySelector('#game-alert-text');
 		if (gameboard[squareIndex] || gameOver) {
 		  return;
 		}
 		gameboard[squareIndex] = currentPlayer;
 		e.target.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">close</i>' : '<i class="material-icons icons">radio_button_unchecked</i>';
+		gameAlert.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">radio_button_unchecked</i>Turn' : '<i class="material-icons icons">close</i>Turn';
 		const winner = checkForWinner();
 		if (winner) {
 		  gameOver = true;

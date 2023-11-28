@@ -10,15 +10,36 @@ body {
 	justify-content: center;
 	.header-container {
 		display: flex;
-		flex-direction: column;
+		flex-direction: row;
 		font-weight: 900;
 		font-size: 1rem;
 		justify-content: center;
-
+		align-items: center;
 		.header-title {
 			font-size: 2rem;
 			font-weight: 900;
 			margin: auto;
+		}
+		.game-alert-container {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			.game-alert {
+				font-size: 1rem;
+				font-weight: 900;
+				margin: 0 1rem;
+
+				#game-alert-text {
+					display: flex;
+					flex-direction: row;
+					justify-content: center;
+					align-items: center;
+					gap: 0.5rem;
+					font-size: 1rem;
+					font-weight: 900;
+					margin: 0 1rem;
+				}
+			}
 		}
 	}
 }
@@ -29,8 +50,6 @@ body {
 	place-items: center;
 	.gameboard-container {
 		width: 20vw;
-		height: 20vw;
-		
 		display: grid;
 		grid-template-columns: repeat(3, 1fr);
 		grid-template-rows: repeat(3, 1fr);
@@ -57,6 +76,32 @@ body {
 			background-color: #e0e0e0;
 		}
 
+	}
+	.game-controls-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		margin-top: 1rem;
+		.game-controls {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			flex-direction: row;
+				.game-controls-buttons {
+					font-size: 1rem;
+					font-weight: 900;
+					margin: 0 1rem;
+					padding: 0.5rem 1rem;
+					border: solid black;
+					border-radius: 0.5rem;
+					background-color: #ffffff;
+					&:hover {
+						cursor: pointer;
+						background-color: #802525;
+					}
+			}
+		}
+	
 	}
 	.player-name-container {
 		display: flex;
