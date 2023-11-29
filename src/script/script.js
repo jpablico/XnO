@@ -3,7 +3,8 @@ document.addEventListener('DOMContentLoaded', function () {
 	  'use strict';
   
 	  const gameboardContainer = document.querySelector(".gameboard-container");
-  
+	  
+
 	  const GameBoard = (() => {
 		const gameboard = Array(9).fill(null);
 		const winningCombinations = [
@@ -17,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
 		  [2, 4, 6]
 		];
 		let currentPlayer = 'X';
+		playerTurn();
 		let gameOver = false;
   
 		function createSquares() {
@@ -41,15 +43,20 @@ document.addEventListener('DOMContentLoaded', function () {
 		  return null;
 		}
   
+		
 		function handleClick(e) {
 		  const squareIndex = parseInt(e.target.dataset.index);
+		  const gameAlertContainer = document.querySelector('.game-alert-container');
 		  const gameAlert = document.querySelector('#game-alert-text');
 		  if (gameboard[squareIndex] || gameOver) {
 			return;
 		  }
 		  gameboard[squareIndex] = currentPlayer;
+		   console.log(currentPlayer)
 		  e.target.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">close</i>' : '<i class="material-icons icons">radio_button_unchecked</i>';
+		  console.log(currentPlayer);
 		  gameAlert.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">radio_button_unchecked</i>Turn' : '<i class="material-icons icons">close</i>Turn';
+		   console.log(currentPlayer);
 		  const winner = checkForWinner();
 		  if (winner) {
 			gameOver = true;
@@ -62,8 +69,24 @@ document.addEventListener('DOMContentLoaded', function () {
 		  } else {
 			currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 		  }
+		  playerTurn();
+		  console.log(currentPlayer);
 		}
-  
+		
+		
+		function playerTurn() {
+			const gameAlertContainer = document.querySelector('.game-alert-container');
+		  if (currentPlayer === 'X') {
+			gameAlertContainer.classList.add('player1');
+			gameAlertContainer.classList.remove('player2');
+		  } else if (currentPlayer === 'O') {
+			gameAlertContainer.classList.add('player2');
+			gameAlertContainer.classList.remove('player1');
+		  } else {
+			console.log('Error: playerTurn()');
+		  }
+		}
+
 		function resetGame() {
 		  gameboard.fill(null);
 		  currentPlayer = 'X';

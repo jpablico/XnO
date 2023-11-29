@@ -1,4 +1,6 @@
-$background-color: #e93434;
+$background-color: #fed700;
+$primary-color: #21b0fe;
+$secondary-color: #fe218b;
 
 body {
 	box-sizing: border-box;
@@ -19,15 +21,25 @@ body {
 		justify-content: center;
 		align-items: center;
 		margin: auto;
+		gap: 1rem;
 		.header-title {
 			font-size: 2rem;
 			font-weight: 900;
 			margin: auto;
 		}
+		.player1 {
+			color: $primary-color;
+		}
+		.player2 {
+			color: $secondary-color;
+		}	
 		.game-alert-container {
 			display: flex;
 			justify-content: center;
 			align-items: center;
+			border : solid black;
+			border-radius: 0.5rem;
+			width: auto;
 			.game-alert {
 				font-size: 1rem;
 				font-weight: 900;
