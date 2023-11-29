@@ -53,9 +53,9 @@ document.addEventListener('DOMContentLoaded', function () {
 		  }
 		  gameboard[squareIndex] = currentPlayer;
 		   console.log(currentPlayer)
-		  e.target.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">close</i>' : '<i class="material-icons icons">radio_button_unchecked</i>';
+		  e.target.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons x-icon">close</i>' : '<i class="material-icons icons o-icon">radio_button_unchecked</i>';
 		  console.log(currentPlayer);
-		  gameAlert.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">radio_button_unchecked</i>Turn' : '<i class="material-icons icons">close</i>Turn';
+		  gameAlert.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons o-icon">radio_button_unchecked</i>Turn' : '<i class="material-icons icons x-icon">close</i>Turn';
 		   console.log(currentPlayer);
 		  const winner = checkForWinner();
 		  if (winner) {
