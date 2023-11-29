@@ -1,72 +1,91 @@
-const gameSetup = (() => {
-	'use strict';
+document.addEventListener('DOMContentLoaded', function () {
+	const gameSetup = (() => {
+	  'use strict';
   
-	const gameboardContainer = document.querySelector(".gameboard-container");
+	  const gameboardContainer = document.querySelector(".gameboard-container");
   
-	const GameBoard = (() => {
-	  const gameboard = Array(9).fill(null);
-	  const winningCombinations = [
-		[0, 1, 2],
-		[3, 4, 5],
-		[6, 7, 8],
-		[0, 3, 6],
-		[1, 4, 7],
-		[2, 5, 8],
-		[0, 4, 8],
-		[2, 4, 6]
-	  ];
-	  let currentPlayer = 'X';
-	  let gameOver = false;
+	  const GameBoard = (() => {
+		const gameboard = Array(9).fill(null);
+		const winningCombinations = [
+		  [0, 1, 2],
+		  [3, 4, 5],
+		  [6, 7, 8],
+		  [0, 3, 6],
+		  [1, 4, 7],
+		  [2, 5, 8],
+		  [0, 4, 8],
+		  [2, 4, 6]
+		];
+		let currentPlayer = 'X';
+		let gameOver = false;
   
-	  function createSquares() {
-		for (let i = 0; i < 9; i++) {
-		  const square = document.createElement('div');
-		  square.classList.add('square');
-		  square.dataset.index = i;
-		  gameboardContainer.appendChild(square);
-		}
-	  }
-  
-	  function checkForWinner() {
-		for (let i = 0; i < winningCombinations.length; i++) {
-		  const [a, b, c] = winningCombinations[i];
-		  if (gameboard[a] && gameboard[a] === gameboard[b] && gameboard[a] === gameboard[c]) {
-			return gameboard[a];
+		function createSquares() {
+		  for (let i = 0; i < 9; i++) {
+			const square = document.createElement('div');
+			square.classList.add('square');
+			square.dataset.index = i;
+			gameboardContainer.appendChild(square);
 		  }
 		}
-		if (gameboard.every(square => square !== null)) {
-		  return 'tie';
-		}
-		return null;
-	  }
   
-	  function handleClick(e) {
-		const squareIndex = parseInt(e.target.dataset.index);
-		const gameAlert = document.querySelector('#game-alert-text');
-		if (gameboard[squareIndex] || gameOver) {
-		  return;
+		function checkForWinner() {
+		  for (let i = 0; i < winningCombinations.length; i++) {
+			const [a, b, c] = winningCombinations[i];
+			if (gameboard[a] && gameboard[a] === gameboard[b] && gameboard[a] === gameboard[c]) {
+			  return gameboard[a];
+			}
+		  }
+		  if (gameboard.every(square => square !== null)) {
+			return 'tie';
+		  }
+		  return null;
 		}
-		gameboard[squareIndex] = currentPlayer;
-		e.target.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">close</i>' : '<i class="material-icons icons">radio_button_unchecked</i>';
-		gameAlert.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">radio_button_unchecked</i>Turn' : '<i class="material-icons icons">close</i>Turn';
-		const winner = checkForWinner();
-		if (winner) {
-		  gameOver = true;
-		  if (winner === 'tie') {
-			alert('Tie game!');
+  
+		function handleClick(e) {
+		  const squareIndex = parseInt(e.target.dataset.index);
+		  const gameAlert = document.querySelector('#game-alert-text');
+		  if (gameboard[squareIndex] || gameOver) {
+			return;
+		  }
+		  gameboard[squareIndex] = currentPlayer;
+		  e.target.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">close</i>' : '<i class="material-icons icons">radio_button_unchecked</i>';
+		  gameAlert.innerHTML = currentPlayer === 'X' ? '<i class="material-icons icons">radio_button_unchecked</i>Turn' : '<i class="material-icons icons">close</i>Turn';
+		  const winner = checkForWinner();
+		  if (winner) {
+			gameOver = true;
+			if (winner === 'tie') {
+			  alert('Tie game!');
+			} else {
+			  let winnerName = winner === 'X' ? 'Player 1' : 'Player 2';
+			  alert(`${winnerName} wins!`);
+			}
 		  } else {
-			let winnerName = winner === 'X' ? 'Player 1' : 'Player 2';
-			alert(`${winnerName} wins!`);
+			currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 		  }
-		} else {
-		  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
 		}
-	  }
   
-	  createSquares();
-	  const squares = document.querySelectorAll('.square');
-	  squares.forEach(square => square.addEventListener('click', handleClick));
-	})();
-  })();
+		function resetGame() {
+		  gameboard.fill(null);
+		  currentPlayer = 'X';
+		  gameOver = false;
+		  const squares = document.querySelectorAll('.square');
+		  squares.forEach(square => square.innerHTML = '');
+		  console.log('Game reset');
+		}
   
-  console.log('script loaded');
+		createSquares();
+		const squares = document.querySelectorAll('.square');
+		squares.forEach(square => square.addEventListener('click', handleClick));
+  
+		return {
+		  resetGame: resetGame
+		};
+	  })();
+  
+	  const resetButton = document.getElementById('reset-button');
+	  resetButton.addEventListener('click', GameBoard.resetGame);
+	});
+	gameSetup();
+	console.log('script loaded');
+  });
+  
