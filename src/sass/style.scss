@@ -167,12 +167,20 @@ body {
 			font-weight: 900;
 			margin: 0 1rem;
 
+			#playerOne {
+				color: $primary-color;
+			}
+			
 			#player1 {
 				background-color: $primary-color;
 				border: none;
 				border-radius: 1rem;
 				color: #ffffff;
 			}
+			#playerTwo {
+				color: $secondary-color;
+			}
+
 			#player2 {
 				background-color: $secondary-color;
 				border: none;
