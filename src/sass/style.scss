@@ -169,9 +169,15 @@ body {
 
 			#player1 {
 				background-color: $primary-color;
+				border: none;
+				border-radius: 1rem;
+				color: #ffffff;
 			}
 			#player2 {
 				background-color: $secondary-color;
+				border: none;
+				border-radius: 1rem;
+				color: #ffffff;
 			}
 		}
 	}
